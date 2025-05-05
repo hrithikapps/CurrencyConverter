@@ -1,5 +1,5 @@
-// src/hooks/useFetch.js
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const useFetch = (url) => {
   const [data, setData] = useState(null);
@@ -9,21 +9,20 @@ const useFetch = (url) => {
   useEffect(() => {
     let isMounted = true;
 
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Failed to fetch");
-        const json = await res.json();
-        if (isMounted) setData(json);
-      } catch (err) {
-        if (isMounted) setError(err.message);
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
-
-    fetchData();
+    axios
+      .get(url)
+      .then((res) => {
+        if (isMounted) {
+          setData(res.data);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (isMounted) {
+          setError(err);
+          setLoading(false);
+        }
+      });
 
     return () => {
       isMounted = false;
