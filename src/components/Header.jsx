@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import { AppBar, Toolbar, Typography, Box } from "@mui/material";
 import NavItem from "./NavItem";
 import ThemeToggle from "./ThemeToggle";

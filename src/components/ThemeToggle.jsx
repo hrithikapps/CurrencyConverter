@@ -1,4 +1,3 @@
-// src/components/ThemeToggle.jsx
 import React from "react";
 import { Switch, FormControlLabel } from "@mui/material";
 import { useThemeMode } from "../context/ThemeContext";
