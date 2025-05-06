@@ -31,6 +31,7 @@ const LoanResults = ({ amount, interest, term, onReset }) => {
   const [currency, setCurrency] = useState("USD");
   const [convertedRate, setConvertedRate] = useState(1);
   const [convertedEMI, setConvertedEMI] = useState(null);
+const apiKey = import.meta.env.VITE_EXCHANGE_RATE_API_KEY;
 
   const r = interest / 12 / 100;
   const n = term * 12;
@@ -38,7 +39,7 @@ const LoanResults = ({ amount, interest, term, onReset }) => {
 
   // fetch rates with dynamic base currency
   const { data } = useFetch(
-    `https://v6.exchangerate-api.com/v6/45c7a0d2dc87ee1b5ad2f00d/latest/${currency}`
+    `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${currency}`
   );
 
   useEffect(() => {

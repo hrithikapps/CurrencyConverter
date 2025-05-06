@@ -13,8 +13,10 @@ import {
 import useFetch from "../hooks/useFetch";
 
 const Exchange_Rate = () => {
+  const apiKey = import.meta.env.VITE_EXCHANGE_RATE_API_KEY;
+
   const { data, loading, error } = useFetch(
-    "https://v6.exchangerate-api.com/v6/45c7a0d2dc87ee1b5ad2f00d/latest/USD"
+    `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`
   );
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
