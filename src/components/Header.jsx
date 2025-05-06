@@ -9,14 +9,15 @@ const navLinks = [
   { label: "Error Page", path: "/error" },
 ];
 
-
 const Header = () => {
   return (
     <AppBar position="static">
-      <Toolbar sx={{ justifyContent: "space-between" }}>
+      <Toolbar
+        sx={{ justifyContent: "space-between", flexWrap: "wrap", gap: 1 }}
+      >
         <Typography variant="h6">Loan Calculator</Typography>
 
-        <Box display="flex" gap={2} alignItems="center">
+        <Box display="flex" gap={2} alignItems="center" flexWrap="wrap">
           {navLinks.map((link) => (
             <NavItem key={link.path} {...link} />
           ))}
